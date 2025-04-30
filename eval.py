@@ -1,16 +1,18 @@
+#!/usr/bin/env python3
 """
 Copyright (c) Meta Platforms, Inc. and affiliates.
 
 This source code is licensed under the license found in the
 LICENSE file in the root directory of this source tree.
 """
-#!/usr/bin/env python3
+import argparse
+import glob
 import os
 import json
 import csv
-import argparse
 import re
 import string
+import unicodedata as ud
 
 import sacrebleu
 import editdistance
@@ -75,11 +77,24 @@ def remove_punc(text: str) -> str:
     extra_punct = r"""„“«»¡¿《》！？｡。＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏."""
     punct = punct + extra_punct
     exclude = set(punct)
-    return "".join(ch for ch in text if ch not in exclude)
+    prediction = "".join(ch for ch in text if ch not in exclude)
+    # Now, try harder to strip punctuation using unicode Px prefix
+    # https://stackoverflow.com/questions/48496869/python3-remove-arabic-punctuation/48499154#48499154
+    prediction = "".join(c for c in prediction if not ud.category(c).startswith("P"))
+    return prediction
 
 
 def normalize_answer(text: str) -> str:
-    return white_space_fix(remove_articles(remove_punc(text.lower())))
+    prediction = white_space_fix(remove_articles(remove_punc(text.lower())))
+    # Get rid of some common reasoning corrupted answers:
+    if " answer is " in prediction:
+        prediction = prediction.split(" answer is ")[0]
+    elif "answer is " in prediction:
+        prediction = prediction.replace("answer is ", "")
+    # In Japanese a lot of answers have the copula prepended for extra politeness
+    elif prediction[-2:] == "です":
+        prediction = prediction[:-2]
+    return prediction
 
 
 def postprocess_answers(input: Union[str, List[str]]) -> Union[str, List[str]]:

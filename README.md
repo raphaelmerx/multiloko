@@ -72,6 +72,8 @@ Each language has its own subdirectory, containing:
 
 Multilingual prompts are contained [examples/prompts.py](examples/prompts.py)
 
+You can assemble the prompts to query the model with yourself, or you can run [examples/create_examples.py](examples/create_examples.py) once which will produce the `prepared_data` folder which now contains fully assembled fewshot and chat prompts for all languages in a jsonl format. Each individual line is trivial dictionary with a single `text` key which is the prompt that needs to be submitted to the model.
+
 MultiLoKo also has a secret test set with 250 examples for each languages, which will be released later on, blindly.
 The split is similar to the dev split, apart from the fact that the topics it includes are more obscure.
 If you would like to know how well your model fares on the test set, please provide us with a HuggingFace implementation of your model.
@@ -107,7 +109,7 @@ options:
   --predictions, -p PREDICTIONS
                         Prediction file to evaluate. Could be CSV or JSONL
   --output, -o OUTPUT   Output file (json) to write results to. If not specified, will print to stdout
-./eval.py -d benchmark_data -s dev -p examples/test.json -o testscore.json
+./eval.py -d benchmark_data -s dev -p examples/test.jsonl -o testscore.json
 ```
 
 ### Metric cheat sheet

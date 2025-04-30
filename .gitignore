@@ -1,2 +1,7 @@
 benchmark_data/*
+prepared_data/*
 *.swp
+__pycache__
+.env/*
+.venv/*
+testscore.json

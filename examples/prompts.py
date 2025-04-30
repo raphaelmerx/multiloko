@@ -298,7 +298,7 @@ fewshot = {
     "simplified_mandarin": textwrap.dedent(
         """
             {% for x in few_shot -%}
-            问题：{{ x["question"] }}只产生一个{ x["output_type"] }}即可。
+            问题：{{ x["question"] }}只产生一个{{ x["output_type"] }}即可。
             答案：{{ x["answer"] }}
 
             {% endfor -%}
@@ -372,7 +372,7 @@ fewshot = {
             C: {{ x["answer"] }}
 
             {% endfor -%}
-            Lütfen aşağıdaki soruyu mümkün olan en kısa şekilde cevaplayın. Cevap bir {{ "output_type" }} olmalıdır.
+            Lütfen aşağıdaki soruyu mümkün olan en kısa şekilde cevaplayın. Cevap bir {{ output_type }} olmalıdır.
             S: {{ question }}.
             C:"""
     ),
@@ -558,10 +558,10 @@ fewshot_examples = {
         {"question": "La câte ediții ale Jocurilor Olimpice de Vară a participat Ivan Patzaichin?", "answer": "5", "output_type": "un număr"},
         ],
     "russian": [
-        {"question": "Какой город России называют Северной Венецией?", "answer": "Санкт-Петербург", "output_type": "имя"}
-        {"question": "В каком году родился Лев Толстой?", "answer": "1828", "output_type": "число"}
-        {"question": "В каком году был основан Санкт-Петербург?", "answer": "1703", "output_type": "число"}
-        {"question": "Кто совершил первый в истории полет в космос?", "answer": "Юрий Гагарин", "output_type": "имя"}
+        {"question": "Какой город России называют Северной Венецией?", "answer": "Санкт-Петербург", "output_type": "имя"},
+        {"question": "В каком году родился Лев Толстой?", "answer": "1828", "output_type": "число"},
+        {"question": "В каком году был основан Санкт-Петербург?", "answer": "1703", "output_type": "число"},
+        {"question": "Кто совершил первый в истории полет в космос?", "answer": "Юрий Гагарин", "output_type": "имя"},
         {"question": "Когда родился Чехов?", "answer": "17 января 1860", "output_type": "дата"}
         ],
     "simplified_mandarin": [

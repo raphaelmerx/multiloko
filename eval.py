@@ -88,7 +88,7 @@ def normalize_answer(text: str) -> str:
     prediction = white_space_fix(remove_articles(remove_punc(text.lower())))
     # Get rid of some common reasoning corrupted answers:
     if " answer is " in prediction:
-        prediction = prediction.split(" answer is ")[0]
+        prediction = prediction.split(" answer is ")[-1]
     elif "answer is " in prediction:
         prediction = prediction.replace("answer is ", "")
     # In Japanese a lot of answers have the copula prepended for extra politeness

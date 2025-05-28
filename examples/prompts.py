@@ -558,11 +558,11 @@ fewshot_examples = {
         {"question": "La câte ediții ale Jocurilor Olimpice de Vară a participat Ivan Patzaichin?", "answer": "5", "output_type": "un număr"},
         ],
     "russian": [
-        {"question": "Какой город России называют Северной Венецией?", "answer": "Санкт-Петербург", "output_type": "имя"}
-        {"question": "В каком году родился Лев Толстой?", "answer": "1828", "output_type": "число"}
-        {"question": "В каком году был основан Санкт-Петербург?", "answer": "1703", "output_type": "число"}
-        {"question": "Кто совершил первый в истории полет в космос?", "answer": "Юрий Гагарин", "output_type": "имя"}
-        {"question": "Когда родился Чехов?", "answer": "17 января 1860", "output_type": "дата"}
+        {"question": "Какой город России называют Северной Венецией?", "answer": "Санкт-Петербург", "output_type": "имя"},
+        {"question": "В каком году родился Лев Толстой?", "answer": "1828", "output_type": "число"},
+        {"question": "В каком году был основан Санкт-Петербург?", "answer": "1703", "output_type": "число"},
+        {"question": "Кто совершил первый в истории полет в космос?", "answer": "Юрий Гагарин", "output_type": "имя"},
+        {"question": "Когда родился Чехов?", "answer": "17 января 1860", "output_type": "дата"},
         ],
     "simplified_mandarin": [
         {"question": "2024金曲奖最佳年度歌曲是什么？", "answer": "又到天黑", "output_type": "名字"},

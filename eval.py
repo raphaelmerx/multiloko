@@ -213,6 +213,10 @@ def edit_similarity(prediction: str, targets: List[str]) -> float:
     return max(SequenceMatcher(None, prediction, target).ratio() for target in targets)
 
 
+def contains(generation: str, targets: List[str]) -> float:
+    return any([x in generation for x in targets]) * 1.0
+
+
 def evaluate_all(reference_answers, our_answers):
     # Evaluate all metrics
     metrics = {
@@ -222,6 +226,7 @@ def evaluate_all(reference_answers, our_answers):
         "chrf": sentence_chrf,
         "edit_distance": edit_distance_many,
         "edit_similarity": edit_similarity,
+        "contains": contains,
     }
     # Compute per example scores
     results = {}
